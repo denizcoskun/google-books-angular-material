@@ -1,0 +1,22 @@
+<div fxLayout="column">
+  <div fxLayoutAlign="center">
+    <form class="example-form" [style.margin.px]="24">
+      <md-input-container [style.fontSize.px]="18" floatPlaceholder="never">
+        <input #input mdInput placeholder="Search books..." autofocus>
+      </md-input-container>
+    </form>
+  </div>
+  <div fxLayout="row" fxLayoutWrap="true" fxLayoutAlign="center">
+    <div class="book-card mat-elevation-z1" *ngFor="let book of results" fxLayout="row">
+
+      <img md-card-image [src]="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://placehold.it/120x200'">
+      <div fxLayout="column" class="book-info">
+        <span class="book-author">{{book.volumeInfo.authors}}</span>
+        <br>
+        <span class="book-title">{{book.volumeInfo.title}}</span>
+        <br>
+        <span class="book-description">{{book.volumeInfo.description | slice:0:10}}...</span>
+      </div>
+    </div>
+  </div>
+</div>
