@@ -13,6 +13,13 @@ import { ExploreBooksComponent } from './explore-books/explore-books.component';
 import { MyLibraryComponent } from './my-library/my-library.component';
 import { BooksService } from './services/books.service';
 import { BookListComponent } from './book-list/book-list.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+
+import { BookEffects } from './effects/book';
+import { reducer } from './reducers/reducers';
+
 const appRoutes: Routes = [
   {path: '', component: ExploreBooksComponent},
   {path: 'explore', component: ExploreBooksComponent},
@@ -31,6 +38,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    StoreModule.provideStore(reducer),
+    EffectsModule.run(BookEffects),
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule,
     MdButtonModule, MdToolbarModule, MdInputModule,

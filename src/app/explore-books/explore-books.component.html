@@ -7,7 +7,7 @@
     </form>
   </div>
   <div fxLayout="row" fxLayoutWrap="true" fxLayoutAlign="center">
-    <div class="book-card mat-elevation-z1" *ngFor="let book of results" fxLayout="row">
+    <div class="book-card mat-elevation-z1" *ngFor="let book of results | async" fxLayout="row">
 
       <img md-card-image [src]="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://placehold.it/120x200'">
       <div fxLayout="column" class="book-info">
